@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7D36FE84-1E6D-44FE-9A0F-73C02BE15D8D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MyDateApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>88618810-2539-491A-B6F6-671AB2EC77AC</key>
+		<string>https://github.com/sabarishsekar/DateUtilities.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MyDateApp/MyDateApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>88618810-2539-491A-B6F6-671AB2EC77AC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sabarishsekar/DateUtilities.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>88618810-2539-491A-B6F6-671AB2EC77AC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>88618810-2539-491A-B6F6-671AB2EC77AC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DateUtilities</string>
+		</dict>
+	</array>
+</dict>
+</plist>

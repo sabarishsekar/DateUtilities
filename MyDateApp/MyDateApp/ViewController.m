@@ -24,46 +24,15 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Inside viewDidLoad..");
     [super viewDidLoad];
     
     [self drawControls];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    NSLog(@"Inside viewDidAppear..");
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"Inside viewWillAppear..");
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    NSLog(@"Inside viewDidDisappear..");
-    [super viewDidDisappear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    NSLog(@"Inside viewWillDisappear..");
-    [super viewWillDisappear:animated];
-}
 
 - (void)drawControls{
-    
-    
-    /*
-     
-     M should be caps
-     IF hours is hh then it is 12 hour format
-     IF hours is HH then it is 24 hour format
-     mm & ss should be in small
-     
-     */
-    
-    
+
     // To get no of hours, minutes, seconds between 2 dates
     NSString *startDateValue = @"2013-10-19";
     NSString *endDateValue = @"2013-10-18";
@@ -71,16 +40,18 @@
     [self calculateTimeBetween2Dates:startDateValue endDateValue:endDateValue];
 
     
-    // To display current date and time
+    /* To display current date and time */
     [self displayCurrentDateWithCurrentTime];
 
+    
     /* To get number of dates between 2 dates */
     NSString *startDateVal = @"2013-10-18";
     NSString *endDateVal = @"2013-11-18";
     [self getNoOfDates:startDateVal endDateVal:endDateVal];
     
-    /* To display countdown timer */
-    [self displayCountDownTimerInAsc:NO];
+    
+    /* To display timer (OR) countdown timer */
+    [self displayCountDownTimerInAsc:NO]; //Pass YES to display regular timer as in MAC status bar. Pass NO to display count down timer.
 
 }
 
@@ -95,13 +66,14 @@
     double secondsInAnHour = 3600;
     int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
     
-//    NSLog(@"Hours:%d", hoursBetweenDates);
-//    NSLog(@"Minutes:%d", hoursBetweenDates*60);
-//    NSLog(@"Seconds:%d", hoursBetweenDates*60*60);
+    NSLog(@"Hours Between 2 Dates:%d",   hoursBetweenDates);
+    NSLog(@"Minutes Between 2 Dates:%d", hoursBetweenDates*60);
+    NSLog(@"Seconds Between 2 Dates:%d", hoursBetweenDates*60*60);
 }
 
 - (void)displayCurrentDateWithCurrentTime{
-    //To get current date
+    
+    /* To get current date */
     NSDate *todayDate = [NSDate date];
     
     UILabel *currentDate = [[UILabel alloc] initWithFrame:CGRectMake(20.0,40.0, 320.0, 30.0)];
@@ -109,8 +81,7 @@
     currentDate.font = [UIFont fontWithName:@"Helvetica" size:13.0];
     [self.view addSubview:currentDate];
     
-    
-    //To display current date in particular format
+    /* To display current date in particular format */
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
     dateFormatter.dateFormat = @"dd-MM-yyyy HH:mm:ss";
@@ -118,6 +89,7 @@
     NSString *dateString = [dateFormatter stringFromDate:todayDate];
     currentDate.text = [NSString stringWithFormat:@"%@%@",@"Today Date is: ",dateString];
 }
+
 
 - (void)getNoOfDates:(NSString*)startDateVal endDateVal:(NSString*)endDateVal{
     
@@ -133,13 +105,12 @@
                                                           toDate:endDate
                                                          options:0];
     
-//    NSLog(@"%ld days between start and end date",[components day]);
+    NSLog(@"%ld days between start and end date",[components day]);
 }
+
 
 - (void)displayCountDownTimerInAsc:(BOOL)displayTimerInAsc{
  
-    /* Start of get current second, minute and hour */
-    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
     
@@ -150,11 +121,8 @@
     self.currentMinute = 00;
     self.currentSecond = 10;
     
-    /* End of get current second, minute and hour */
 
-    
     UIFont *timerFont = [UIFont fontWithName:@"Helvetica" size:42.0];
-    
     self.hourTimer = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 100.0, 60.0, 30.0)];
     self.hourTimer.text  = [NSString stringWithFormat:@"%d:",self.currentHour];
     self.hourTimer.font = timerFont;
@@ -170,11 +138,11 @@
     self.secondsTimer.font = timerFont;
     [self.view addSubview:self.secondsTimer];
     
-    
+    NSTimer *timerInterval;
     if(displayTimerInAsc){
-        NSTimer *timerInterval1 = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(displayIncreasedTime) userInfo:nil repeats:YES];
+        timerInterval = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(displayIncreasedTime) userInfo:nil repeats:YES];
     }else{
-        NSTimer *timerInterval = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(displayDecreasedTime) userInfo:nil repeats:YES];
+        timerInterval = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(displayDecreasedTime) userInfo:nil repeats:YES];
     }
 }
 
